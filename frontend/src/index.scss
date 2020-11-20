@@ -1,0 +1,204 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #ffffffb7;
+  background-color: orange;
+  font-family: 'Raleway', sans-serif;
+}
+
+.grid-container {
+  position: relative;
+  min-height: 100vh;
+  min-width: 100%;
+  display: grid;
+  grid-template-rows: 60px auto 60px;
+  overflow-x: hidden; // hides collapsed sidebar
+  header {
+    background: rgb(66, 92, 82);
+    background: linear-gradient(
+      0deg,
+      rgba(66, 92, 82, 1) 0%,
+      rgba(40, 57, 52, 1) 6%,
+      rgba(30, 40, 38, 1) 100%
+    );
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .brand-name {
+      font-size: 1.2em;
+      font-weight: 900;
+    }
+    .main-nav {
+      display: none;
+      width: 100%;
+      padding-left: 20px;
+      flex-direction: row;
+      align-items: center;
+      .close-button {
+        font-size: 1.2em;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        div {
+          margin: 0 20px;
+        }
+      }
+    }
+    .lang-select {
+      margin-left: auto;
+      font-size: small;
+      font-weight: 700;
+    }
+    .hamburger-button {
+      margin-left: 5%;
+      font-size: 1.2em;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    @media (min-width: 400px) {
+      .main-nav {
+        display: flex;
+        .close-button {
+          display: none;
+        }
+      }
+      .hamburger-button {
+        display: none;
+      }
+    }
+  }
+
+  main {
+    height: 100%;
+    display: flex;
+    .main-view {
+      margin-right: 30px; // leave space for the sidebar button
+      flex: 1;
+      display: grid;
+      grid-template-rows: auto 5em;
+      padding: 10px;
+      background: rgb(10, 10, 10);
+      background: linear-gradient(
+        0deg,
+        rgb(10, 10, 10) 0%,
+        rgb(44, 44, 44) 100%
+      );
+      .map-area {
+        display: grid;
+        place-items: center;
+        padding: 10px;
+        .svg-map {
+          max-width: 500px;
+        }
+      }
+      .progress-bar {
+        padding: 10px 5%;
+        .progress-dates {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .bar-fill {
+          border-radius: 0.5em;
+          background: rgb(90, 142, 123);
+          background: linear-gradient(
+            180deg,
+            rgba(90, 142, 123, 1) 0%,
+            rgba(53, 89, 78, 1) 100%
+          );
+        }
+      }
+    }
+
+    .sidebar-view {
+      position: absolute;
+      z-index: 999;
+      width: 100%;
+      height: calc(100% - 120px);
+      right: calc(30px - 100%);
+      transition: right 1.3s ease;
+      .sidebar {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .sidebar-button {
+          .chevron {
+            height: 100%;
+            width: 100%;
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          .chevron-close {
+            display: none;
+          }
+          height: 100%;
+          width: 30px;
+          background-color: rgb(52, 85, 72);
+          &:hover {
+            cursor: pointer;
+            background-color: rgb(71, 114, 97);
+          }
+        }
+        .datalist {
+          flex-basis: 100%;
+          list-style-type: none;
+          background-color: #1b1b1b;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+
+          li {
+            width: 100%;
+            padding: 10px;
+            &:hover {
+              cursor: pointer;
+              background-color: #8585858a;
+            }
+          }
+        }
+      }
+      &:target {
+        right: 0;
+        .sidebar {
+          .sidebar-button {
+            .chevron-close {
+              display: grid;
+            }
+            .chevron-open {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    background-color: #1a1a1a;
+    display: grid;
+    place-items: center;
+  }
+}
