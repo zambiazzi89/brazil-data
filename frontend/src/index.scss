@@ -136,8 +136,8 @@ body {
       z-index: 999;
       width: 100%;
       height: calc(100% - 120px);
-      right: calc(30px - 100%);
-      transition: right 1.3s ease;
+      //left: calc(100% - 30px);
+      transition: left 1.3s ease;
       .sidebar {
         height: 100%;
         display: flex;
@@ -150,9 +150,6 @@ body {
             display: grid;
             place-items: center;
             color: rgba(255, 255, 255, 0.5);
-          }
-          .chevron-close {
-            display: none;
           }
           height: 100%;
           width: 30px;
@@ -180,19 +177,11 @@ body {
           }
         }
       }
-      &:target {
-        right: 0;
-        .sidebar {
-          .sidebar-button {
-            .chevron-close {
-              display: grid;
-            }
-            .chevron-open {
-              display: none;
-            }
-          }
-        }
-      }
+      //&:target {
+      //  left: 0;
+      //  .sidebar {
+      //  }
+      //}
     }
   }
 

@@ -1,32 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { SidebarData } from '../data/SidebarData'
 
-const Sidebar = () => {
-  const [barToggle, setBarToggle] = useState(false)
-
-  useEffect(() => {
-    barToggle ? console.log('open') : console.log('closed')
-  })
-
+const Sidebar = ({ barToggle, setBarToggle }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-button">
-        <a
-          href="#closed"
-          className="chevron chevron-close"
-          onClick={() => setBarToggle(!barToggle)}
-        >
-          <FaChevronRight />
-        </a>
-
-        <a
-          href="#sidebar-view"
-          className="chevron chevron-open"
-          onClick={() => setBarToggle(!barToggle)}
-        >
-          <FaChevronLeft />
-        </a>
+        {barToggle ? (
+          <div
+            className="chevron chevron-close"
+            onClick={() => setBarToggle(!barToggle)}
+          >
+            <FaChevronRight />
+          </div>
+        ) : (
+          <div
+            className="chevron chevron-open"
+            onClick={() => setBarToggle(!barToggle)}
+          >
+            <FaChevronLeft />
+          </div>
+        )}
       </div>
       <div className="datalist">
         {SidebarData.map((item, index) => {
