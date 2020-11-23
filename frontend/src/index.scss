@@ -136,8 +136,13 @@ body {
       z-index: 999;
       width: 100%;
       height: calc(100% - 120px);
-      //left: calc(100% - 30px);
       transition: left 1.3s ease;
+      &.open-sidebar {
+        left: 0;
+      }
+      &.closed-sidebar {
+        left: calc(100% - 30px);
+      }
       .sidebar {
         height: 100%;
         display: flex;
@@ -177,11 +182,6 @@ body {
           }
         }
       }
-      //&:target {
-      //  left: 0;
-      //  .sidebar {
-      //  }
-      //}
     }
   }
 

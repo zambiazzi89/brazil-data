@@ -6,8 +6,9 @@ import Sidebar from './Sidebar'
 const Main = () => {
   const [barToggle, setBarToggle] = useState(false)
 
-  const sidebarClosed = 'calc(100% - 30px)'
-  const sidebarOpen = '0'
+  const sidebarClassName = `sidebar-view ${
+    barToggle ? 'open-sidebar' : 'closed-sidebar'
+  }`
 
   return (
     <main>
@@ -17,10 +18,7 @@ const Main = () => {
         </div>
         <ProgressBar />
       </div>
-      <div
-        className="sidebar-view"
-        style={{ left: barToggle ? sidebarOpen : sidebarClosed }}
-      >
+      <div className={sidebarClassName}>
         <Sidebar barToggle={barToggle} setBarToggle={setBarToggle} />
       </div>
     </main>
