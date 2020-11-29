@@ -183,6 +183,21 @@ body {
         }
       }
     }
+    @media (min-width: 400px) {
+      .sidebar-view {
+        position: absolute;
+        z-index: 999;
+        width: 100%;
+        height: calc(100% - 120px);
+        transition: left 1.3s ease;
+        &.open-sidebar {
+          left: 0;
+        }
+        &.closed-sidebar {
+          left: calc(100% - 30px);
+        }
+      }
+    }
   }
 
   footer {
@@ -190,4 +205,14 @@ body {
     display: grid;
     place-items: center;
   }
+}
+
+.map-state {
+  background: rgb(177, 78, 78);
+  background: linear-gradient(
+    90deg,
+    rgba(177, 78, 78, 1) 0%,
+    rgba(173, 163, 85, 1) 50%,
+    rgba(85, 168, 132, 1) 100%
+  );
 }
