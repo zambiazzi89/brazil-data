@@ -108,8 +108,16 @@ body {
         display: grid;
         place-items: center;
         padding: 10px;
-        .svg-map {
-          max-width: 500px;
+        .brazil-map {
+          max-width: 800px;
+          path {
+            fill: rgba(121, 173, 152, 0.897);
+            stroke: rgb(37, 44, 41);
+            &:hover {
+              cursor: pointer;
+              fill: rgba(121, 173, 152, 0.973);
+            }
+          }
         }
       }
       .progress-bar {
