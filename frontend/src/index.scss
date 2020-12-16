@@ -121,20 +121,45 @@ body {
         }
       }
       .progress-bar {
-        padding: 10px 5%;
-        .progress-dates {
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        .year-and-bar {
           display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-        }
-        .bar-fill {
-          border-radius: 0.5em;
-          background: rgb(90, 142, 123);
-          background: linear-gradient(
-            180deg,
-            rgba(90, 142, 123, 1) 0%,
-            rgba(53, 89, 78, 1) 100%
-          );
+          flex-direction: column;
+          justify-content: flex-end;
+          height: 30px;
+          width: auto;
+          //background-color: rgb(90, 44, 128);
+          .progress-year {
+            display: none;
+          }
+
+          &:first-child,
+          &:last-child {
+            width: auto;
+            .progress-year {
+              display: block;
+            }
+          }
+
+          .bar-fill {
+            min-width: 10px;
+            height: 10px;
+            border-radius: 0.5em;
+            background: rgb(90, 142, 123);
+            background: linear-gradient(
+              180deg,
+              rgba(90, 142, 123, 1) 0%,
+              rgba(53, 89, 78, 1) 100%
+            );
+          }
+          &:hover {
+            cursor: pointer;
+            .progress-year {
+              display: block;
+            }
+          }
         }
       }
     }

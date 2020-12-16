@@ -1,13 +1,18 @@
 import React from 'react'
 
-const ProgressBar = () => {
+const ProgressBar = ({ years }) => {
+  years = Array.from(years)
+
   return (
     <div className="progress-bar">
-      <div className="progress-dates">
-        <div>1970</div>
-        <div>2020</div>
-      </div>
-      <div className="bar-fill">0%</div>
+      {years.map((year) => (
+        <div className="year-and-bar">
+          <div key={year} className="progress-year">
+            {year}
+          </div>
+          <div className="bar-fill"></div>
+        </div>
+      ))}
     </div>
   )
 }
