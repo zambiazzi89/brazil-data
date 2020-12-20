@@ -12,22 +12,33 @@ const Main = () => {
   }`
 
   // Create a set with years of the Objects
-  const years = new Set()
+  const yearSet = new Set()
   tempData.map((stateData) =>
-    Object.keys(stateData).map((year) => years.add(parseInt(year)))
+    Object.keys(stateData).map((year) => yearSet.add(parseInt(year)))
   )
-  if (years.has(NaN)) {
-    years.delete(NaN)
+  if (yearSet.has(NaN)) {
+    yearSet.delete(NaN)
   }
-  console.log(years)
+  const yearArray = Array.from(yearSet).sort()
+  const minYear = Math.min(...yearArray)
+  const maxYear = Math.max(...yearArray)
+
+  const [selectedYear, setSelectedYear] = useState(minYear)
 
   return (
     <main>
       <div className="main-view">
         <div className="map-area">
           <BrazilMap />
+          <div className="selected-year">{selectedYear}</div>
         </div>
-        <ProgressBar years={years} />
+        <ProgressBar
+          yearArray={yearArray}
+          minYear={minYear}
+          maxYear={maxYear}
+          selectedYear={selectedYear}
+          setSelectedYear={setSelectedYear}
+        />
       </div>
       <div className={sidebarClassName}>
         <Sidebar barToggle={barToggle} setBarToggle={setBarToggle} />
