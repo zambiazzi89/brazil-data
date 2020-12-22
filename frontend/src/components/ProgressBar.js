@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 const ProgressBar = ({
-  yearArray,
   minYear,
   maxYear,
   selectedYear,
   setSelectedYear,
+  minValue,
+  maxValue,
 }) => {
   const [playButton, setPlayButton] = useState(true)
 
@@ -26,24 +27,9 @@ const ProgressBar = ({
   return (
     <div className="legend-and-progress">
       <div className="color-legend">
-        <div className="sub-legend low-color">
-          <svg viewBox="0 0 20 20" width="1rem">
-            <rect width="20" height="20" stroke="white" fill="red" />
-          </svg>
-          <div>low #</div>
-        </div>
-        <div className="sub-legend mid-color">
-          <svg viewBox="0 0 20 20" width="1rem">
-            <rect width="20" height="20" stroke="white" fill="orange" />
-          </svg>
-          <div>mid #</div>
-        </div>
-        <div className="sub-legend high-color">
-          <svg viewBox="0 0 20 20" width="1rem">
-            <rect width="20" height="20" stroke="white" fill="green" />
-          </svg>
-          <div>high #</div>
-        </div>
+        <div>{minValue}</div>
+        <div className="color-legend-bar" />
+        <div>{maxValue}</div>
       </div>
       <div className="progress-bar">
         {playButton ? (

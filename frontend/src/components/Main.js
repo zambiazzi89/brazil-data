@@ -23,13 +23,33 @@ const Main = () => {
   const minYear = Math.min(...yearArray)
   const maxYear = Math.max(...yearArray)
 
+  // Create a set with values of the Objects
+  const valueSet = new Set()
+  tempData.map((stateData) =>
+    Object.values(stateData).map((value) => valueSet.add(parseInt(value)))
+  )
+  if (valueSet.has(NaN)) {
+    valueSet.delete(NaN)
+  }
+  const valueArray = Array.from(valueSet).sort()
+  const minValue = Math.min(...valueArray)
+  const maxValue = Math.max(...valueArray)
+
   const [selectedYear, setSelectedYear] = useState(minYear)
+
+  const selectedStateValues = {}
+  tempData.map(
+    (stateData) => (selectedStateValues[stateData.UF] = stateData[selectedYear])
+  )
 
   return (
     <main>
       <div className="main-view">
         <div className="map-area">
-          <BrazilMap />
+          <BrazilMap
+            selectedStateValues={selectedStateValues}
+            maxValue={maxValue}
+          />
           <div className="selected-year">{selectedYear}</div>
         </div>
         <ProgressBar
@@ -38,6 +58,8 @@ const Main = () => {
           maxYear={maxYear}
           selectedYear={selectedYear}
           setSelectedYear={setSelectedYear}
+          minValue={minValue}
+          maxValue={maxValue}
         />
       </div>
       <div className={sidebarClassName}>

@@ -117,6 +117,12 @@ body {
             &:hover {
               cursor: pointer;
               fill: rgba(121, 173, 152, 0.973);
+              opacity: 0.8;
+              &:after {
+                position: absolute;
+                margin: 0;
+                content: attr(title);
+              }
             }
           }
         }
@@ -124,8 +130,10 @@ body {
           position: absolute;
           justify-self: start;
           align-self: end;
+          border: 1px solid honeydew;
+          padding: 5px;
           margin-left: 5%;
-          margin-bottom: 5%;
+          margin-bottom: 20%;
           font-weight: 900;
         }
       }
@@ -133,18 +141,23 @@ body {
         width: 100%;
         .color-legend {
           width: 100%;
-          padding: 0 3%;
+          padding: 5px 3%;
           height: 1.5em;
           display: flex;
           flex-direction: row;
           align-items: center;
           justify-content: space-around;
-          .sub-legend {
-            display: flex;
-            flex-direction: row;
-            div {
-              margin-left: 1em;
-            }
+          .color-legend-bar {
+            width: 50%;
+            height: 100%;
+            border-radius: 10px;
+            background: rgb(140, 70, 70);
+            background: linear-gradient(
+              90deg,
+              rgba(140, 70, 70, 1) 0%,
+              rgba(140, 140, 70, 1) 50%,
+              rgba(70, 140, 70, 1) 100%
+            );
           }
         }
         .progress-bar {
@@ -249,11 +262,4 @@ body {
 }
 
 .map-state {
-  background: rgb(177, 78, 78);
-  background: linear-gradient(
-    90deg,
-    rgba(177, 78, 78, 1) 0%,
-    rgba(173, 163, 85, 1) 50%,
-    rgba(85, 168, 132, 1) 100%
-  );
 }
